@@ -1,1 +1,1 @@
-# MajicHeroesDB
+# MagicHeroesDB
