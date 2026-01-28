@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function displayEffects(effects, container) {
-    let html = '<h3>Effects</h3><table border="1"><tr><th>Name</th><th>Description</th></tr>';
+    let html = '<h3>Effects</h3><table border="1"><tr><th>Name</th><th>Image</th><th>Description</th></tr>';
     effects.forEach(effect => {
-      html += `<tr><td>${effect.name}</td><td>${effect.description}</td></tr>`;
+      html += `<tr><td>${effect.name}</td><td><img src="/static/images/effects/${effect.img}.png" alt="${effect.name}"></td><td>${effect.description}</td></tr>`;
     });
     html += '</table>';
     container.innerHTML = html;
