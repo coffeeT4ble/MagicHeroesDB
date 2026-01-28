@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   const resultsContainer = document.getElementById('results')
-
+  
   document.getElementById('loadEffects').addEventListener('click', function() {
     loadEffects(resultsContainer);
   });
