@@ -1,25 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const resultsDiv = document.getElementById('results')
+  const resultsContainer = document.getElementById('results')
 
-  document.getElementById('loadEffects').addEventListener('click', loadEffects)
-
-  async function loadEffects(){
+  document.getElementById('loadEffects').addEventListener('click', function() {
+    loadEffects(resultsContainer);
+  });
+  async function loadEffects(container) {
     try {
-      const response = await fetch('/api/effects')
-      const effects = await response.json()
-      displayEffects(effects)
+      const response = await fetch('/api/effects');
+      const effects = await response.json();
+      displayEffects(effects, container);
     } catch (error) {
-      resultsDiv.innerHTML = '<p>Loading effects: ' + error.message + '</p>'
+      container.innerHTML = '<p>Error loading effects: ' + error.message + '</p>';
     }
   }
 
-  function displayEffects(effects) {
-    let html = '<h3>Effects</h3><table border="1"><tr><th>NAME</th><th>DESCRIPTION</th></tr>'
+  function displayEffects(effects, container) {
+    let html = '<h3>Effects</h3><table border="1"><tr><th>Name</th><th>Description</th></tr>';
     effects.forEach(effect => {
-      html += `<tr><td>${effect.name}</td><td>${effect.description}</td></tr>`
+      html += `<tr><td>${effect.name}</td><td>${effect.description}</td></tr>`;
     });
-    html += '</table>'
-    resultsDiv.innerHTML(html)
+    html += '</table>';
+    container.innerHTML = html;
   }
-  
+
 });
