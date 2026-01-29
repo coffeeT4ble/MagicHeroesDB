@@ -7,6 +7,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/effects')
+def effects():
+    return render_template('effects.html')
+
 @app.route('/api/effects')
 def get_effects():
     conn = get_connection()
