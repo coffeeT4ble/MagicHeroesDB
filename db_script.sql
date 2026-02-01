@@ -111,7 +111,8 @@ insert into effects(name, description, img) values
 ),
 (
     'BROKEN HEART',
-    'heal or attack\nconditions:
+    'heal or attack
+    conditions:
     - if player health > 10:
     -- damage enemy
     - if player health < 10:
