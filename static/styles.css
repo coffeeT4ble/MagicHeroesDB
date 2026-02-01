@@ -1,0 +1,19 @@
+.effects-table {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+.effect-image {
+  display: block;
+  width: 304px;
+}
+.effect-image-cell,
+.effect-header-cell,
+.effect-desc-cell {
+  width: 304px;
+  padding: 5px;
+}
+
+.effect-desc-cell {
+  text-align: center;
+}

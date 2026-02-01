@@ -21,6 +21,7 @@ function displayEffects(effects, container) {
 
   const table = document.createElement('table')
   table.setAttribute('border', '3')
+  table.className = 'effects-table'
 
   for (let i = 0; i < effects.length; i+=3) {
     const rowEffects = effects.slice(i, i + 3)
