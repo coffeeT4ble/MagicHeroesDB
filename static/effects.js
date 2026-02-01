@@ -28,6 +28,7 @@ function displayEffects(effects, container) {
     const headerRow = document.createElement('tr')
     rowEffects.forEach(effect => {
       const headerCell = document.createElement('th')
+      headerCell.className = 'effect-header-cell'
       headerCell.textContent = effect.name
       headerRow.appendChild(headerCell)
     })
@@ -39,6 +40,7 @@ function displayEffects(effects, container) {
       imageCell.className = 'effect-image-cell'
       
       const img = document.createElement('img')
+      img.className = 'effect-image'
       img.src = `/static/images/effects/${effect.img}.png`
       img.alt = effect.name
 
@@ -50,6 +52,7 @@ function displayEffects(effects, container) {
     const descRow = document.createElement('tr')
     rowEffects.forEach(effect => {
       const descCell = document.createElement('td')
+      descCell.className = 'effect-desc-cell'
       descCell.style.whiteSpace = 'pre-line'
       descCell.textContent = effect.description
       descRow.appendChild(descCell)
