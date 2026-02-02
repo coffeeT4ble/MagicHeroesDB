@@ -54,4 +54,9 @@
 
 .effect-detailed-table-desc {
   text-align: center;
+  font-size: 22px;
+}
+
+.effect-detailed-table-name {
+  font-size: 30px;
 }
