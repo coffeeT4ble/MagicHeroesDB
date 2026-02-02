@@ -57,11 +57,16 @@ function displayEffects(effects, container) {
 
 function detailedTable(effect, imageSrc) {
   const container = document.getElementById('content')
-  container.innerHTML = ''
+  container.classList.add('blurred')
+
+  const overlay = document.createElement('div')
+  overlay.className = 'effect-overlay'
+  overlay.addEventListener('click', closeDetailedTable)
   
   const dTab = document.createElement('table')
   dTab.setAttribute('border', '5')
   dTab.className = 'effect-detailed-table'
+  dTab.addEventListener('click', (e) => e.stopPropagation())
 
   const headerRow = document.createElement('tr')
   const header = document.createElement('th')
@@ -84,9 +89,21 @@ function detailedTable(effect, imageSrc) {
   const descRow = document.createElement('tr')
   const desc = document.createElement('td')
   desc.className = 'effect-detailed-table-desc'
+  desc.style.whiteSpace = 'pre-line'
   desc.textContent = effect.description
   descRow.appendChild(desc)
   dTab.appendChild(descRow)
 
-  container.appendChild(dTab)
+  overlay.appendChild(dTab)
+  document.body.appendChild(overlay)
+}
+
+function closeDetailedTable() {
+  const container = document.getElementById('content')
+  container.classList.remove('blurred')
+
+  const overlay = document.querySelector('.effect-overlay')
+  if(overlay){
+    overlay.remove()
+  }
 }
