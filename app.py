@@ -36,5 +36,15 @@ def get_effect(effect_id):
     finally:
         conn.close()
 
+@app.route('/api/weapons')
+def get_weapons():
+    conn = get_connection()
+    try:
+        cur = conn.execute('select * from weapons')
+        weapons = [dict(row) for row in cur.fetchall()]
+        return jsonify(weapons)
+    finally:
+        conn.close()
+
 if __name__ == '__main__':
     app.run(debug=True)
