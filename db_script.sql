@@ -10,6 +10,7 @@ id integer primary key autoincrement,
 name text not null,
 description text not null,
 health integer not null,
+img text not null,
 
 e_1_id text not null,
 e_1_num integer not null,
@@ -41,6 +42,7 @@ CREATE TABLE weapons(
 id integer primary key autoincrement,
 name text not null,
 health integer not null,
+img text not null,
 
 e_1_id text not null,
 e_1_num integer not null,

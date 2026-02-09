@@ -1,4 +1,4 @@
-document.addEventLister('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function(){
   const container = document.getElementById('content')
   loadWeapons(container)
 })
@@ -6,8 +6,8 @@ document.addEventLister('DOMContentLoaded', function(){
 async function loadWeapons(container){
   try {
     const response = await fetch('/api/weapons')
-    const effects = await response.json()
-    displayWeapons(effects, container)
+    const weapons = await response.json()
+    displayWeapons(weapons, container)
   } catch (error) {
     const errorPara = document.createElement('p')
     errorPara.textContent = 'Error loading Weapons: ' + error.message
@@ -30,13 +30,25 @@ function displayWeapons(weapons, container) {
     rowWeapons.forEach(weapon => {
       const imgCell = document.createElement('td')
       imgCell.setAttribute('colspan', '3')
-      
+      imgCell.className = 'weapon-image-cell'
+
+      const img = document.createElement('img')
+      img.className = 'weapon-image'
+      const src = `/static/images/weapons/${weapon.img}.png`
+      img.src = src
+      img.alt = weapon.name
+      // event listener
+
+      imgCell.appendChild(img)
+      imgRow.appendChild(imgCell)
     })
+    table.appendChild(imgRow)
   }
+  container.appendChild(table)
 }
 
-async function loadEffects(){
+/*async function loadEffects(){
   try{
     const response = await fetch('/api/effects')
   }
-}
+}*/

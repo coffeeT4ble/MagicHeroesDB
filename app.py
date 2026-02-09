@@ -11,6 +11,10 @@ def index():
 def effects():
     return render_template('effects.html')
 
+@app.route('/weapons')
+def weapons():
+    return render_template('weapons.html')
+
 @app.route('/api/effects')
 def get_effects():
     conn = get_connection()
