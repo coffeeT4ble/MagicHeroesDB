@@ -41,14 +41,29 @@ function displayWeapons(weapons, container) {
 
       imgCell.appendChild(img)
       imgRow.appendChild(imgCell)
+      loadEffects(table, weapon)
     })
     table.appendChild(imgRow)
   }
   container.appendChild(table)
 }
 
-/*async function loadEffects(){
+async function loadEffects(table, weapon){
   try{
     const response = await fetch('/api/effects')
+    const effects = await response.json()
+    displayEffects(effects, table, weapon)
+  } catch (error) {
+    console.log("no effects :(")
   }
-}*/
+}
+
+function displayEffects(effects, table, weapon){
+   const numRow = document.createElement('tr')
+  for(let i = 0; i < 3; i++){
+    const numCell = document.createElement('td')
+    numCell.textContent = i+1
+    numRow.appendChild(numCell)
+  }
+  table.appendChild(numRow)
+}
