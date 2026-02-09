@@ -29,7 +29,7 @@ function displayWeapons(weapons, container) {
     const imgRow = document.createElement('tr')
     rowWeapons.forEach(weapon => {
       const imgCell = document.createElement('td')
-      imgCell.setAttribute('colspan', '3')
+      imgCell.setAttribute('colspan', '6')
       imgCell.className = 'weapon-image-cell'
 
       const img = document.createElement('img')
@@ -62,6 +62,7 @@ function displayEffects(effects, table, weapon){
    const numRow = document.createElement('tr')
   for(let i = 0; i < 3; i++){
     const numCell = document.createElement('td')
+    numCell.setAttribute('colspan', '2')
     numCell.textContent = i+1
     numRow.appendChild(numCell)
   }
