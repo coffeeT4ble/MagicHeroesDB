@@ -37,34 +37,51 @@ function displayWeapons(weapons, container) {
       const src = `/static/images/weapons/${weapon.img}.png`
       img.src = src
       img.alt = weapon.name
+      const effect = loadEffectById(3)
+      console.log("test" + effect.img)
       // event listener
 
       imgCell.appendChild(img)
       imgRow.appendChild(imgCell)
-      loadEffects(table, weapon)
     })
     table.appendChild(imgRow)
   }
   container.appendChild(table)
 }
 
-async function loadEffects(table, weapon){
+
+
+async function loadEffectById(id){
   try{
-    const response = await fetch('/api/effects')
-    const effects = await response.json()
-    displayEffects(effects, table, weapon)
+    const response = await fetch(`/api/effects/${id}`)
+    if (!response.ok){
+      throw new Error('Effect not found')
+    }
+    const effect = await response.json()
+    return effect
   } catch (error) {
-    console.log("no effects :(")
+    console.log("no effect found :(")
+    return null
   }
 }
 
-function displayEffects(effects, table, weapon){
-   const numRow = document.createElement('tr')
+/*function displayEffects(effects, table, weapon){
+  const topNumRow = document.createElement('tr')
   for(let i = 0; i < 3; i++){
-    const numCell = document.createElement('td')
-    numCell.setAttribute('colspan', '2')
-    numCell.textContent = i+1
-    numRow.appendChild(numCell)
+    const topNumCell = document.createElement('td')
+    topNumCell.setAttribute('colspan', '2')
+    topNumCell.textContent = i+1
+    topNumRow.appendChild(topNumCell)
   }
-  table.appendChild(numRow)
-}
+  table.appendChild(topNumRow)
+
+  const topEffectIds = []
+  topEffectIds.push(weapon.e_1_id, weapon.e_2_id, weapon.e_3_id)
+  const topEffectsNums = []
+  topEffectNums.push(weapon.e_1_num, weapon.e_2_num, weapon.e_3_num)
+  const topImgRow = document.createElement('tr')
+  for(i = 0; i < 3; i++){
+    const topEffectNum = document.createElement('td')
+    
+  }
+}*/
