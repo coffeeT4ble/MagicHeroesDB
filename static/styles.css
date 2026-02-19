@@ -4,6 +4,12 @@
   width: auto;
 }
 
+.weapons-table {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+
 .effect-image {
   display: block;
   width: 304px;
@@ -59,4 +65,21 @@
 
 .effect-detailed-table-name {
   font-size: 30px;
+}
+
+.weapon-effect-row-num {
+  text-align: center;
+  font-size: 16px;
+}
+
+.weapon-effect-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 76px;
+}
+
+.weapon-effect-num-cell {
+  text-align: center;
+  font-size: 22px;
 }

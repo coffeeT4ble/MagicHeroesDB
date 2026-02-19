@@ -72,7 +72,7 @@ async function effectRows(weapon, table) {
     weapon.e_5_id,
     weapon.e_6_id
   ]
-  const idArray = [
+  const numArray = [
     weapon.e_1_num,
     weapon.e_2_num,
     weapon.e_3_num,
@@ -90,14 +90,16 @@ async function effectRows(weapon, table) {
 
     const numCell = document.createElement('td')
     numCell.className = 'weapon-effect-num-cell'
-    numCell.textContent = idArray[i]
+    numCell.textContent = numArray[i]
 
     const imgCell = document.createElement('td')
     const img = document.createElement('img')
-    const imgName = await getEffect(imgArray[i])
-    const src = `/static/images/effects/${imgName.img}.png`
+    img.className = 'weapon-effect-img'
+    const effect = await getEffect(imgArray[i])
+    const src = `/static/images/effects/${effect.img}.png`
     img.src = src
-    img.alt = imgName
+    img.alt = effect.img
+    imgCell.addEventListener("click", () => {detailedEffectTable(effect, src)})
 
     numRowOne.appendChild(numRowNum)
     rowOne.appendChild(numCell)
@@ -117,14 +119,16 @@ async function effectRows(weapon, table) {
 
     const numCell = document.createElement('td')
     numCell.className = 'weapon-effect-num-cell'
-    numCell.textContent = idArray[i]
+    numCell.textContent = numArray[i]
 
     const imgCell = document.createElement('td')
     const img = document.createElement('img')
-    const imgName = await getEffect(imgArray[i])
-    const src = `/static/images/effects/${imgName.img}.png`
+    img.className = 'weapon-effect-img'
+    const effect = await getEffect(imgArray[i])
+    const src = `/static/images/effects/${effect.img}.png`
     img.src = src
-    img.alt = imgName
+    img.alt = effect.img
+    imgCell.addEventListener("click", () => {detailedEffectTable(effect, src)})
 
     
     numRowTwo.appendChild(numRowNum)
@@ -134,4 +138,57 @@ async function effectRows(weapon, table) {
   }
   table.appendChild(numRowTwo)
   table.appendChild(rowTwo)
+}
+
+function detailedEffectTable(effect, imageSrc) {
+  const container = document.getElementById('content')
+  container.classList.add('blurred')
+
+  const overlay = document.createElement('div')
+  overlay.className = 'effect-overlay'
+  overlay.addEventListener('click', closeDetailedTable)
+  
+  const dTab = document.createElement('table')
+  dTab.setAttribute('border', '5')
+  dTab.className = 'effect-detailed-table'
+  dTab.addEventListener('click', (e) => e.stopPropagation())
+
+  const headerRow = document.createElement('tr')
+  const header = document.createElement('th')
+  header.className = 'effect-detailed-table-name'
+  header.textContent = effect.name
+  headerRow.appendChild(header)
+  dTab.appendChild(headerRow)
+
+  const imgRow = document.createElement('tr')
+  const imgCell = document.createElement('td')
+  imgCell.className = 'effect-detailed-table-image-cell'
+  const image = document.createElement('img')
+  image.className = 'effect-detailed-table-image'
+  image.src = imageSrc
+  image.alt = effect.name
+  imgCell.appendChild(image)
+  imgRow.appendChild(imgCell)
+  dTab.appendChild(imgRow)
+
+  const descRow = document.createElement('tr')
+  const desc = document.createElement('td')
+  desc.className = 'effect-detailed-table-desc'
+  desc.style.whiteSpace = 'pre-line'
+  desc.textContent = effect.description
+  descRow.appendChild(desc)
+  dTab.appendChild(descRow)
+
+  overlay.appendChild(dTab)
+  document.body.appendChild(overlay)
+}
+
+function closeDetailedTable() {
+  const container = document.getElementById('content')
+  container.classList.remove('blurred')
+
+  const overlay = document.querySelector('.effect-overlay')
+  if(overlay){
+    overlay.remove()
+  }
 }
