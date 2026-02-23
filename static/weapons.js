@@ -45,7 +45,6 @@ async function displayWeapons(weapons, container) {
     })
 
     await Promise.all(rowPromises)
-    //table.appendChild(imgRow)
   }
 
   container.appendChild(table)
