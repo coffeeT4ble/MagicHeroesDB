@@ -19,7 +19,7 @@ def weapons():
 def get_effects():
     conn = get_connection()
     try:
-        cur = conn.execute("SELECT id, name, description, img FROM effects ORDER BY name ASC")
+        cur = conn.execute("SELECT id, name, description, img FROM effects ORDER BY colour ASC")
         effects = [dict(row) for row in cur.fetchall()]
         return jsonify(effects)
     finally:

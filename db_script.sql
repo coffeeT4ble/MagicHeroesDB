@@ -2,7 +2,8 @@ create table effects(
 id integer primary key autoincrement,
 name text not null,
 description text not null,
-img text not null
+img text not null,
+colour text not null
 );
 
 create TABLE heroes(

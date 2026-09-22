@@ -1,13 +1,15 @@
-insert into effects(name, description, img) values
+insert into effects(name, description, img, colour) values
 (
     'BASIC ATTACK',
     'deals damage to enemy',
-    'basic_attack'
+    'basic_attack',
+    'red'
 ),
 (
     'BASIC HEAL',
     'heals player',
-    'basic_heal'
+    'basic_heal',
+    'green'
 ),
 (
     'SHIELD',
@@ -17,7 +19,8 @@ insert into effects(name, description, img) values
     weapon with shield cannot be used till:
     - broken by enemy
     - rejected by player',
-    'basic_shield'
+    'basic_shield',
+    'blue'
 ),
 (
     'CHAIN',
@@ -27,52 +30,60 @@ insert into effects(name, description, img) values
     - caster cannot use weapon till:
     -- effects ends
     -- effect cancelled by caster',
-    'chain'
+    'chain',
+    'black'
 ),
 (
     'FIST',
     'deals damage to either enemy or enemy weapon',
-    'fist'
+    'fist',
+    'black'
 ),
 (
     'WEAPON DAMAGE',
     'deals damage to enemy weapon',
-    'weapon_damage'
+    'weapon_damage',
+    'black'
 ),
 (
     'BROKEN HEART',
     'heal or attack
     conditions:
-    - if player health > 10:
+    - if player health >= 10:
     -- damage enemy
     - if player health < 10:
     -- heal player',
-    'broken_heart'
+    'broken_heart',
+    'green'
 ),
 (
     'SKULL',
     'deal damage to enemy
     choose which weapon an enemy uses next
     can be picked even if shielded',
-    'skull'
+    'skull',
+    'black'
 ),
 (
     'MIMIC',
     'copy enemy`s last used effect',
-    'mimic'
+    'mimic',
+    'blue'
 ),
 (
     'LIFESTEAL',
     'deal damage to enemy
     caster gets healed for half the dealt damage
     round up if dealt damage is odd',
-    'lifesteal'
+    'lifesteal',
+    'red'
 ),
 (
     'BONES',
     'adds to bone token
     info on tokens in character desc',
-    'bones_token'
+    'bones_token',
+    'black'
 )
 
 select id, name from effects;
